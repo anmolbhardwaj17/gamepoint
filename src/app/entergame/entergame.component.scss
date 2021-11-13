@@ -1,0 +1,56 @@
+.main{
+    width:100%;
+    
+}
+body{
+    background-color: black !important;
+}
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    width:200px;
+    border: 2px solid #9CC73B;
+    border-radius: 8px;
+    display: inline-block;
+    padding: 8px 16px;
+    cursor: pointer;
+    color:white;
+    background:black;
+    margin-right: 12px;
+}
+
+.current-condition{
+    color:#9CC73B;
+}
+
+//   .btn-primary{
+//       max-width: 200px;
+//   }
+
+.loader-outer{
+    width: 100%;
+    text-align: center;
+}
+.loader{
+    margin: auto;
+}
+
+.modal-content{
+    border-radius: 16px;
+    border: 2px solid #9CC73B;
+  }
+
+  input[type='radio']:checked:after{
+      background-color: #9CC73B;
+      border: 2px solid #9CC73B;
+  }
+
+  @media(max-width:455px){
+    .main{
+      padding:0px 8px !important;
+    }
+    .center-div{
+        padding:0px 16px !important;
+    }
+  }

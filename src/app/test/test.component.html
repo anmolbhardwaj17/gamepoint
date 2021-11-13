@@ -1,0 +1,638 @@
+<div class="outer">
+  <div class="px-2">
+    <nav class="navbar justify-content-between">
+      <a class="navbar-brand"
+        ><img width="160px" src="assets/logo.png" alt="Gamepoint logo"
+      /></a>
+      <div class="auth">
+        <a class="txt-secondary bold pd-1 cursor-pointer" (click)="openModallogin()">Login</a>
+        <a class="txt-secondary bold pd-1 cursor-pointer" (click)="openModalsignup()">Signup</a>
+      </div>
+    </nav>
+  </div>
+  <div class="main pdb-5">
+    <div class="primary">
+      <div class="text-center">
+        <img class="main-logo" src="assets/logo.png" alt="Gamepoint logo" />
+        <p class="sub-heading pdt-2 mx-auto w-75">
+          We are a
+          <span class="txt-secondary bold extra">group of enthusiastic gamers</span>
+          aiming to create the
+          <span class="txt-secondary bold extra">largest community of gamers</span> by
+          <span class="txt-secondary bold extra">developing a platform</span><br />
+          where any gamer (from amateur to professional) can
+          <span class="txt-secondary bold extra"
+            >play against anyone and earn money</span
+          >
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container stats mt-4 pb-4 mt-4 mb-4">
+    <div class="primary-2">
+      <div class="row text-center pt-4 mt-4">
+        <div class="col-12 col-sm-4 pt-3 pb-3">
+          <h1 class="txt-secondary" [countUp]=totalUsers [options]="option">0</h1>
+          <p class="txt-primary">Active gamers</p>
+        </div>
+        <div class="col-12 col-sm-4 pt-3 pb-3">
+          <h1 class="txt-secondary" [countUp]=totalEarnings [options]="option"></h1>
+          <p class="txt-primary" >Cumulative Earnings</p>
+        </div>
+        <div class="col-12 col-sm-4 pt-3 pb-3">
+          <h1 class="txt-secondary" [countUp]=totalGames [options]="option"></h1>
+          <p class="txt-primary">Gaming sessions</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container how mt-4 pb-4 mt-4 mb-4">
+    <h2 class="txt-primary text-center pb-4">How it works</h2>
+    <div>
+      <div class="text-center row">
+        <div class="col-12 col-sm-6 col-lg-3 pdt-3">
+          <img width="40%" src="assets/step1.png" alt="ps-controller" />
+          <p class="txt-primary pt-3">
+            Login or create an account at gamepoint.com
+          </p>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-3 pdt-3">
+          <img width="40%" src="assets/step2.png" alt="ps-controller" />
+          <p class="txt-primary pt-3">
+            Create/join a match or challenge an opponent
+          </p>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-3 pdt-3">
+          <img width="40%" src="assets/step3.png" alt="ps-controller" />
+          <p class="txt-primary pt-3">
+            Play your match in your console Xbox/PS5/Nintendo
+          </p>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-3 pdt-3">
+          <img width="40%" src="assets/step4.png" alt="ps-controller" />
+          <p class="txt-primary pt-3">
+            Get rewarded and recieve your money right away
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container rankings pdb-4">
+    <div class="row pt-2">
+      <div class="col-12 col-md-8 pt-4">
+        <!-- <h2 class="txt-primary text-center pb-4">Leaderboard</h2>
+        <div class="pt-2 mt-2">
+          <div class="w-100">
+            <table class="bg-dark rounded mx-auto w-100" mdbTable>
+              <thead class="txt-secondary">
+                <tr>
+                  <th
+                    class="txt-secondary px-2 py-2 text-center"
+                    *ngFor="let head of leaderboardHeadElements"
+                    scope="col"
+                  >
+                    {{ head }}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  class="txt-primary text-center"
+                  mdbTableCol
+                  *ngFor="let el of Leaderboard"
+                >
+                  <th class="txt-primary px-2 py-2" scope="row">{{ el.userId }}</th>
+                  <td class="txt-primary px-2 py-2">{{ el.session }}</td>
+                  <td class="txt-primary px-2 py-2">{{ el.amountWon }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div> -->
+        <div>
+          <h2 class="txt-primary text-center pdb-1">Open games</h2>
+          <div class="table-responsive">
+
+            <table mat-table [dataSource]="listData" class="mat-elevation-z8 custom-table">
+
+              <!--- Note that these columns can be defined in any order.
+                    The actual rendered columns are set as a property on the row definition" -->
+
+              <!-- Position Column -->
+              <ng-container matColumnDef="userId">
+                <th class="table-header ogp" mat-header-cell *matHeaderCellDef> USER ID </th>
+                <td class="table-main" mat-cell *matCellDef="let element"> {{element.userId}} </td>
+              </ng-container>
+
+              <!-- Name Column -->
+              <ng-container matColumnDef="consoleName">
+                <th class="table-header" mat-header-cell *matHeaderCellDef> CONSOLE </th>
+                <td class="table-main" mat-cell *matCellDef="let element"> {{element.consoleName}} </td>
+              </ng-container>
+
+              <!-- Weight Column -->
+              <ng-container matColumnDef="gameName">
+                <th class="table-header" mat-header-cell *matHeaderCellDef> GAME </th>
+                <td class="table-main" mat-cell *matCellDef="let element"> {{element.gameName}} </td>
+              </ng-container>
+
+              <!-- Symbol Column -->
+
+              <ng-container matColumnDef="entryAmount">
+                <th class="table-header" mat-header-cell *matHeaderCellDef> ENTRY FEE </th>
+                <td class="table-main"mat-cell *matCellDef="let element"> {{element.entryAmount}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="scheduleTime">
+                <th class="table-header" mat-header-cell *matHeaderCellDef> TIME </th>
+                <td class="table-main"mat-cell *matCellDef="let element"> {{element.scheduleTime}} </td>
+              </ng-container>
+
+
+              <ng-container matColumnDef="action">
+                <th class="table-header" mat-header-cell *matHeaderCellDef> ACTION </th>
+                <td class="table-button"mat-cell *matCellDef="let element">
+                  <button class="btn-outline"  (click)="openModallogin()"  >{{element.action}}</button>
+                </td>
+
+              </ng-container>
+
+
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumnsOpengames; sticky: true"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumnsOpengames;"></tr>
+            </table>
+          </div>
+
+
+        </div>
+      </div>
+      <div class="col-12 col-md-4 pt-4">
+        <!-- <h2 class="txt-primary text-center pb-4">Open games</h2>
+        <div class="pt-2 mt-2">
+          <div class="w-100 table-responsive">
+            <table class="bg-dark rounded mx-auto" mdbTable>
+              <thead class="txt-secondary">
+                <tr>
+                  <th
+                    class="txt-secondary px-2 py-2 text-center"
+                    *ngFor="let head of openGamesHeadElements"
+                    scope="col"
+                  >
+                    {{ head }}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  class="txt-secondary text-center"
+                  mdbTableCol
+                  *ngFor="let el of openGamesElements"
+                >
+                  <th class=" txt-primary px-2 py-2" scope="row">{{ el.userId }}</th>
+                  <td class="txt-primary px-2 py-2">{{ el.console }}</td>
+                  <td class="txt-primary px-2 py-2">{{ el.gameName }}</td>
+                  <td class="txt-primary px-2 py-2">{{ el.entryFee }}</td>
+
+                  <td class="px-2 py-2">
+
+                    <button class="btn-primary w-100">
+                      {{ el.action }}
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div> -->
+        <h2 class="txt-primary text-center pdb-1">Leaderboard</h2>
+        <div class="table-responsive">
+          <table mat-table [dataSource]="leaderBoardListData" class="mat-elevation-z8 custom-table">
+
+            <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="userId">
+              <th class="table-header" mat-header-cell *matHeaderCellDef> USER ID </th>
+              <td class="table-main" mat-cell *matCellDef="let element"> {{element.userId}} </td>
+            </ng-container>
+
+
+
+
+            <ng-container matColumnDef="totalEarnings">
+              <th class="table-header" mat-header-cell *matHeaderCellDef> EARNINGS </th>
+              <td class="table-main" mat-cell *matCellDef="let element"> {{element.totalEarnings}} </td>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="winningStreak">
+              <th class="table-header" mat-header-cell *matHeaderCellDef>WINNING STREAK</th>
+              <td class="table-main" mat-cell *matCellDef="let element"> {{element.winningStreak}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="matchesPlayed">
+              <th class="table-header" mat-header-cell *matHeaderCellDef>MATCHES</th>
+              <td class="table-main" mat-cell *matCellDef="let element"> {{element.matchesPlayed}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumnsLeaderboard; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumnsLeaderboard;"></tr>
+          </table>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+
+<app-footer></app-footer>
+
+<!-- <div class="outer-form" id="1">
+                        <form [formGroup]="loginForm">
+                            <div class="form-group mb-3">
+                                <label for="email" class="mb-2">Email Address</label>
+                                <br>
+                                <input
+                                    id="email"
+                                    ngModel
+                                    name="email"
+                                    placeholder="Enter your email"
+                                    class="form-control p-3"
+                                    formControlName="userName"
+                                    required
+                                >
+                                <small *ngIf="email?.invalid && email?.touched" class="text-danger">Email is Required</small>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="password" class="mb-2">Password</label>
+                                <br>
+                                <input
+                                    id="password"
+                                    ngModel
+                                    [type]="hide ? 'password' : 'text'"
+                                    name="password"
+                                    placeholder="Enter your password"
+                                    class="form-control p-3"
+                                    formControlName="password"
+                                    required minlength="6" maxlength="50"
+                                >
+                                <small *ngIf="password?.invalid && password?.touched" class="text-danger">Password is Required</small>
+                            </div>
+                            <div class="form-group">
+                                <input (change)="showPassword($event)" type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label ps-2" for="exampleCheck1">Show password</label>
+                            </div>
+
+                            <br>
+                            <button (click)="login()" class="btn p-3 col-12">Login</button>
+                            <br>
+
+                            <br>
+                            <span>Don't have an account? </span><a class="btnClick">Register</a>
+                          </form>
+                    </div> -->
+<!-- <div class="outer-form" id="2" style="display:none;">
+                        <form [formGroup]="registerForm">
+
+                            <div class="form-group mb-3">
+                                <label for="name" class="mb-2">Name</label>
+                                <br>
+                                <input
+                                    id="name"
+                                    ngModel
+                                    name="name"
+                                    placeholder="Enter your name"
+                                    class="form-control p-2"
+                                    formControlName="name"
+                                    required
+                                >
+                                <small *ngIf="name?.invalid && name?.touched" class="text-danger">This is Required</small>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="userId" class="mb-2">Username</label>
+                                <br>
+                                <input
+                                    id="userId"
+                                    ngModel
+                                    name="userId"
+                                    placeholder="Enter username"
+                                    class="form-control p-2"
+                                    formControlName="userId"
+                                    required
+                                >
+                                <small *ngIf="userId?.invalid && userId?.touched" class="text-danger">This is Required</small>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="email" class="mb-2">Email Address</label>
+                                <br>
+                                <input
+                                    id="email"
+                                    ngModel
+                                    name="email"
+                                    placeholder="Enter your email"
+                                    class="form-control p-2"
+                                    formControlName="email"
+                                    required
+                                >
+                                <small *ngIf="email?.invalid && email?.touched" class="text-danger"
+                                    >Email is Required</small>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="password" class="mb-2">Password</label>
+                                <br>
+                                <input
+                                    id="password"
+                                    ngModel
+                                    name="password"
+                                    placeholder="Enter your password"
+                                    class="form-control p-2"
+                                    formControlName="password"
+                                    required
+                                >
+                                <small *ngIf="password?.invalid && password?.touched" class="text-danger">Password is Required</small>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="mobileNumber" class="mb-2">Phone no.</label>
+                                <br>
+                                <input
+                                    id="mobileNumber"
+                                    ngModel
+                                    name="phone"
+                                    placeholder="Enter your phone no."
+                                    class="form-control p-2"
+                                    formControlName="mobileNumber"
+                                    required
+                                >
+                                <small *ngIf="mobileNumber?.invalid && mobileNumber?.touched" class="text-danger">Phone no. is Required</small>
+                            </div>
+
+
+                            <br>
+                            <button (click)="register()" class="btn p-2 col-12">Register</button>
+                            <br>
+
+                            <br>
+                            <span>Already have an account? </span><a class="btnClick">Login</a>
+                          </form>
+                    </div> -->
+
+<div class=" modal" tabindex="-1" role="dialog" [ngStyle]="{ display: display }">
+  <div class=" modal-dialog modal-dialog-centered" role="document">
+    <div class="bg-black modal-content">
+      <div class="txt-primary modal-header">
+        <h4 class="txt-primary modal-title">Login</h4>
+        <button
+          type="button"
+          class="btn-primary-close rounded close"
+          aria-label="Close"
+          (click)="onCloseHandledlogin()"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="txt-primary modal-body">
+        <div class="outer-form" id="1">
+          <form [formGroup]="loginForm">
+            <div class="form-group mgb-2">
+              <label for="email" class="mgb-2">Email Address</label>
+              <br />
+              <input
+                id="email"
+                ngModel
+                name="email"
+                placeholder="Enter your email"
+                class="form-control p-3"
+                formControlName="email"
+                required
+              />
+              <small
+                *ngIf="loginEmail?.invalid && loginEmail?.touched"
+                class="text-danger"
+                >Email is Required</small
+              >
+            </div>
+            <div class="form-group mgb-3">
+              <label for="password" class="mgb-2">Password</label>
+              <br />
+              <input
+                id="password"
+                ngModel
+                [type]="hide ? 'password' : 'text'"
+                name="password"
+                placeholder="Enter your password"
+                class="form-control p-3"
+                formControlName="password"
+                required
+                minlength="6"
+                maxlength="50"
+              />
+              <small
+                *ngIf="loginPassword?.invalid && loginPassword?.touched"
+                class="text-danger"
+                >Password is Required</small
+              >
+            </div>
+            <div class="form-group">
+              <div class="d-flex justify-content-between">
+                <span>
+                  <input
+                (change)="showPassword($event)"
+                type="checkbox"
+                class="border border-secondary border-2 form-check-input"
+                id="exampleCheck1"
+              />
+                <label class="form-check-label ps-2" for="exampleCheck1">Show password</label> 
+                </span>
+                <span>
+                  <a class="forgotPassword" (click)="openModalForgotPassword()">Forgot password?</a>
+                </span>
+              </div>
+              
+            </div>
+
+            <br />
+            <button [disabled]="this.loginForm.invalid" (click)="login()" class="btn-primary pd-1">
+              Login
+            </button>
+            <br />
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{ display: displaysignup }"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content bg-black">
+      <div class="modal-header">
+        <h4 class="txt-primary modal-title">Sign up</h4>
+        <button
+          type="button"
+          class="btn-primary-close rounded close"
+          aria-label="Close"
+          (click)="onCloseHandledsignup()"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="txt-primary modal-body">
+        <div class="outer-form" id="2">
+          <form [formGroup]="registerForm">
+            <div class="form-group mgb-2">
+              <label for="name" class="mgb-1">Name</label>
+              <br />
+              <input
+                id="name"
+                ngModel
+                name="name"
+                placeholder="Enter your name"
+                class="form-control p-3"
+                formControlName="name"
+                required
+              />
+              <small *ngIf="name?.invalid && name?.touched" class="text-danger"
+                >Name is Required</small
+              >
+            </div>
+            <div class="form-group mgb-2">
+                                 <label for="userId" class="mgb-1">Username</label>
+                                 <br>
+                                 <input
+                                     id="userId"
+                                     ngModel
+                                     name="userId"
+                                     placeholder="Enter username"
+                                     class="form-control p-3"
+                                     formControlName="userId"
+                                     required
+                                 >
+                                 <small *ngIf="userId?.invalid && userId?.touched" class="text-danger">Username is Required</small>
+                             </div>
+            <div class="form-group mgb-2">
+              <label for="email" class="mgb-1">Email Address</label>
+              <br />
+              <input
+                id="email"
+                ngModel
+                name="email"
+                placeholder="Enter your email"
+                class="form-control p-3"
+                formControlName="email"
+                required
+              />
+              <small
+                *ngIf="email?.invalid && email?.touched"
+                class="text-danger"
+                >Email is Required</small
+              >
+            </div>
+            <div class="form-group mgb-2">
+                                 <label for="password" class="mgb-1">Password</label>
+                                 <br>
+                                 <input
+                                 type="password"
+                                     id="password"
+                                     ngModel
+                                     name="password"
+                                     placeholder="Enter your password"
+                                     class="form-control p-3"
+                                     formControlName="password"
+                                     required
+                                 >
+                                 <small *ngIf="password?.invalid && password?.touched" class="text-danger">Password should be atleast 6 characters</small>
+                             </div>
+            <div class="form-group mgb-2">
+                                 <label for="mobileNumber" class="mgb-1">Phone no.</label>
+                                 <br>
+                                 <input
+                                 type="number"
+                                     id="mobileNumber"
+                                     ngModel
+                                     name="phone"
+                                     placeholder="Enter your phone no."
+                                     class="form-control p-3"
+                                     formControlName="mobileNumber"
+
+                                 >
+                                 <small *ngIf="mobileNumber?.invalid && mobileNumber?.touched" class="text-danger">Phone no. is Required</small>
+                             </div>
+
+            <br />
+            <button
+            [disabled]="this.registerForm.invalid"
+              (click)="register()"
+              class="btn-primary pd-1"
+            >
+            Sign up
+            </button>
+            <br />
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class=" modal" tabindex="-1" role="dialog" [ngStyle]="{ display: displayForgotPassword }">
+  <div class=" modal-dialog modal-dialog-centered" role="document">
+    <div class="bg-black modal-content">
+      <div class="txt-primary modal-header">
+        <h4 class="txt-primary modal-title">Forgot Password</h4>
+        <button
+          type="button"
+          class="btn-primary-close rounded close"
+          aria-label="Close"
+          (click)="onCloseHandledForgotPassword()"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="txt-primary modal-body">
+        <div class="outer-form" id="1">
+          <form [formGroup]="forgotPasswordForm">
+            <div class="form-group mgb-2">
+              <label for="email" class="mgb-2">Email Address</label>
+              <br />
+              <input
+                id="email"
+                ngModel
+                name="email"
+                placeholder="Enter your email"
+                class="form-control p-3"
+                formControlName="email"
+                required
+              />
+              <small
+                *ngIf="forgotPasswordEmail?.invalid && forgotPasswordEmail?.touched"
+                class="text-danger"
+                >Email is Required</small
+              >
+            </div>
+            <br />
+            <button [disabled]="this.forgotPasswordForm.invalid" (click)="forgotPassword()" class="btn-primary pd-1">
+                Submit
+            </button>
+            <br />
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

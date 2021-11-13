@@ -1,0 +1,147 @@
+<div class="main pdx-3">
+    <div class="center-div">
+      <h5 class="txt-primary pdb-1">You have been matched! Please start your game..</h5>
+      
+      <div style="border-radius: 16px;" class="bg-d pd-1 mg-3 row">
+          <div class="pdt-1 col-12 col-md-6">
+            <h5 style="letter-spacing: 2px;" class="txt-primary gaming pdb-1">YOUR DETAILS</h5>
+            <div class="pdb-1">
+              <span class="table-header">UserID</span>
+              <h4 class="txt-primary">{{userId}}</h4>
+            </div>
+            <div class="pdb-1">
+                <span class="table-header">PSN ID</span>
+                <h4 class="txt-primary">{{psnId}}</h4>
+            </div>
+          </div>
+          <div class="pdt-1 col-12 col-md-6">
+            <h5 style="letter-spacing: 2px;" class="txt-primary gaming pdb-1">OPPONENT DETAILS</h5>
+            <div class="pdb-1">
+              <span class="table-header">UserID</span>
+              <h4 class="txt-primary">{{opponentUserID}}</h4>
+            </div>
+            <div class="pdb-1">
+                <span class="table-header">PSN ID</span>
+                <h4 class="txt-primary">{{opponentPsnId}}</h4>
+            </div>
+          </div>
+        
+      </div>
+      <div style="border-radius: 16px;" class="bg-d pd-1 mg-2 row">
+        <h4 class="txt-primary">Game details: <span class="current-condition">In progress</span></h4>
+        <div class="pdt-1 col-12 col-md-6">
+            <div class="pdb-1">
+              <span class="table-header">Console</span>
+              <h4 class="txt-primary">{{console}}</h4>
+            </div>
+            <div class="pdb-1">
+                <span class="table-header">Game</span>
+                <h4 class="txt-primary">{{gameName}}</h4>
+            </div>
+          </div>
+          <div class="pdt-1 col-12 col-md-6">
+          <form class="pdb-1" [formGroup]="proofCheck">
+            <div class="form-group mgb-3">
+              <label style="letter-spacing: 2px;" for="myTeamName" class="mgb-1 txt-primary gaming">YOUR TEAM</label>
+                <input 
+                    id="myTeamName"
+                    ngModel
+                    name="myTeamName"
+                    placeholder="Real Madrid"
+                    class="form-control py-3"
+                    formControlName="myTeamName"
+                    
+                >
+            </div>
+            <div class="form-group mgb-3">
+              <label style="letter-spacing: 2px;" for="opponentTeamName" class="mgb-1 txt-primary gaming">OPPONENT TEAM</label>
+                <input 
+                    id="opponentTeamName"
+                    ngModel
+                    name="opponentTeamName"
+                    placeholder="Barcelona"
+                    class="form-control py-3"
+                    formControlName="opponentTeamName"
+                    
+                >
+            </div>
+            <div class="form-group mgb-3">
+              <label style="letter-spacing: 2px;" for="myScore" class="mgb-1 txt-primary gaming">YOUR SCORE</label>
+                <input 
+                type="number"
+                    id="myScore"
+                    ngModel
+                    name="myScore"
+                    placeholder="My score"
+                    class="form-control py-3"
+                    formControlName="myScore"
+                    
+                >
+            </div>
+            <div class="form-group mgb-3">
+              <label style="letter-spacing: 2px;" for="opponentScore" class="mgb-1 txt-primary gaming">OPPONENT SCORE</label>
+                <input 
+                type="number"
+                    id="opponentScore"
+                    ngModel
+                    name="opponentScore"
+                    placeholder="Opponent score"
+                    class="form-control py-3"
+                    formControlName="opponentScore"
+                    
+                >
+            </div>
+            <div class="form-group mgb-3">
+              <label style="letter-spacing: 2px;" for="myGameResult" class="mgb-1 txt-primary gaming">RESULT</label> <br>
+              <input class=" txt-primary" type="radio" (click)="showScreenshot()" ng-model value="WON" id="WON" name="myGameResult" formControlName="myGameResult"> <label for="WON" class="pd-1 txt-primary">WON</label>
+              <input class=" txt-primary" type="radio" (click)="hideScreenshot()" ng-model value="LOSE" id="LOSE" name="myGameResult" formControlName="myGameResult"> <label for="LOSE" class="pd-1 txt-primary">LOSE</label>
+            </div>
+            <div class="form-group mgb-2" *ngIf=isWon>
+               <label for="file-upload" class="mgy-1 custom-file-upload">
+                  <i class=" bi bi-image"></i> Attach Screenshot
+              </label>
+              <input 
+              id="myConsoleScreenshot"
+                    ngModel
+                    name="myConsoleScreenshot"
+                    class="form-control"
+                    (change)="selectFile($event)"
+                    
+                    accept="image/png, image/jpeg*"
+                    capture
+                   
+              id="file-upload" type="file"/>
+              <div [innerHtml]='msg' *ngIf="msg" style="color: red;"></div>
+	            <div><img width="300px" height="auto" [src]="url" *ngIf="url"></div>
+            </div>
+            <button [disabled]="proofCheck.invalid" (click)="openProcessingModal()" class="btn-primary pd-1">Submit</button>
+            <!-- [disabled]="this.proofCheck.invalid" -->
+          </form>
+          </div>
+        
+      </div>
+    </div>
+    
+  </div>
+
+
+  <div class="bg-blur modal" tabindex="-1" role="dialog" [ngStyle]="{ display: display }">
+    <div class=" modal-dialog modal-dialog-centered" role="document">
+      <div class="bg-black modal-content">
+        <div class="modal-header">
+          <h4 class="txt-primary text-center modal-title">Processing</h4>
+         
+        </div>
+        <div class="txt-primary modal-body">
+          <div class="loader-outer">
+            <img class="loader" src="/assets/loader.svg" alt="">
+          </div>
+          
+          <p class="pd-3 text-center">{{displayMessage}}
+          </p>
+          <button (click)="navigateToDashboard()" class="btn-primary pd-1">Go to Dashboard</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>

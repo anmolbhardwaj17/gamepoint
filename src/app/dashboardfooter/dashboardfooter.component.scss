@@ -1,0 +1,23 @@
+.footer{
+    background-color: black !important;
+    color:white;
+    border-top: 4px solid #C3DA42;
+}
+.row{
+    padding:32px 0px;
+    width:80%;
+    margin:auto;
+}
+
+
+a{
+    color:white;
+    text-decoration: none;
+    
+}
+a:hover{
+    color:#C3DA42;
+    font-weight: 600;
+    transition: 1s;
+}
+

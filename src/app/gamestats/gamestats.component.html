@@ -1,0 +1,101 @@
+<div class="row main pdx-3">
+  <div class="col-12 col-md-1"></div>
+  <div class="col-12 col-md-10">
+    <div class="d-flex justify-content-between">
+      <h2 STYLE="font-weight: 700;" class="txt-primary pdb-4">Game stats</h2>
+      <span>
+        <button (click)="moreCoins()" [disabled]='disButton()' style="font-size: 12px;" class="btn-outline">Request for more coins</button>
+      </span>
+      
+    </div>
+    
+    <div class="data  bg-d">
+        <div class="row pd-1">
+            <div class="col-12 col-md-4 col-sm-2">
+                <p style="letter-spacing: 2px;" class="table-header gaming">MATCHES<br>PLAYED</p>
+                <h2 class="txt-primary">{{matchesPlayed}}</h2>
+            </div>
+            <div class="col-12 col-md-4 col-sm-2">
+                <p style="letter-spacing: 2px;" class="table-header gaming">TOTAL<br>EARNINGS</p>
+                <h2 class="txt-primary">₹{{totalEarnings}}</h2>
+            </div>
+            <div class="col-12 col-md-4 col-sm-2">
+                <p style="letter-spacing: 2px;" class="table-header gaming">WINNING<br>STREAK</p>
+                <h2 class="txt-primary">{{winningStreak}}</h2>
+            </div>
+
+
+             <div class="col-12 col-md-4 col-sm-2">
+                <p style="letter-spacing: 2px;" class="table-header gaming">TOTAL<br>SPENT</p>
+                <h2 class="txt-primary">{{totalSpent}}</h2>
+            </div>
+            <div class="col-12 col-md-4 col-sm-2">
+                <p style="letter-spacing: 2px;" class="table-header gaming">TOTAL<br>VALUE</p>
+                <h2 class="txt-primary">₹{{totalValue}}</h2>
+            </div>
+            <div class="col-12 col-md-4 col-sm-2">
+                <p style="letter-spacing: 2px;" class="table-header gaming">CONFLICT<br>COUNT</p>
+                <h2 class="txt-primary">{{conflictCount}}</h2>
+            </div>
+        </div>
+    </div>
+    
+    <div class="pdt-4 mgy-4 ">
+      <h5 class="txt-primary gaming spacing">PAST GAMES</h5>
+        <div class="table-responsive" >
+          <table mat-table [dataSource]="listData" class="mat-elevation-z8 custom-table">
+
+            <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+          
+            <!-- Position Column -->
+            <ng-container matColumnDef="userId">
+              <th class="table-header ogp" mat-header-cell *matHeaderCellDef> User ID </th>
+              <td class="table-main" mat-cell *matCellDef="let element"> {{element.userId}} </td>
+            </ng-container>
+          
+            <!-- Name Column -->
+            <ng-container matColumnDef="consoleName">
+              <th class="table-header ogp" mat-header-cell *matHeaderCellDef> Console </th>
+              <td class="table-main" mat-cell *matCellDef="let element"> {{element.consoleName}} </td>
+            </ng-container>
+          
+            <!-- Weight Column -->
+            <ng-container matColumnDef="gameName">
+              <th class="table-header ogp" mat-header-cell *matHeaderCellDef> Game </th>
+              <td class="table-main" mat-cell *matCellDef="let element"> {{element.gameName}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="result">
+              <th class="table-header ogp" mat-header-cell *matHeaderCellDef> Result </th>
+              <td class="table-main" mat-cell *matCellDef="let element"> {{element.result}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="entryAmount">
+              <th class="table-header ogp" mat-header-cell *matHeaderCellDef> Entry fee </th>
+              <td class="table-main" mat-cell *matCellDef="let element"> {{element.entryAmount}} </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="scheduleTime">
+              <th class="table-header ogp" mat-header-cell *matHeaderCellDef> Time </th>
+              <td class="table-main" mat-cell *matCellDef="let element"> {{element.scheduleTime}} </td>
+            </ng-container>
+          
+
+            <ng-container matColumnDef="amountWon">
+              <th class="table-header ogp" mat-header-cell *matHeaderCellDef> Amount won </th>
+              <td class="table-main" mat-cell *matCellDef="let element"> {{element.amountWon}} </td>
+            </ng-container>
+          
+
+            
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumnsPastgames; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumnsPastgames;"></tr>
+          </table>
+        </div>
+    </div>
+  </div>
+  <div class="col-12 col-md-1"></div>
+    
+</div>

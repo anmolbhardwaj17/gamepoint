@@ -1,0 +1,53 @@
+:host {
+    --primary-color: #ffffff;
+    --secondary-color: #BDBDBD;
+    --gradient: linear-gradient(94.81deg, #C3DA42 -8.75%, #54A52D 112.82%);
+    --bg-color: #000000;
+    --shadow: drop-shadow(0px 2px 80px rgba(84, 165, 45, 0.74)) drop-shadow(0px 0.446726px 17.869px rgba(84, 165, 45, 0.441119)) drop-shadow(0px 0.133002px 5.32008px rgba(84, 165, 45, 0.298881));
+    
+  }
+
+small{
+    font-size:12px;
+}
+
+
+
+
+
+#sidebar {
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height:100vh;
+    height:auto;
+    min-width: 250px;
+    max-width: 250px;   
+    transition: all 0.3s;
+    
+    
+}
+
+#sidebar.active {
+    margin-left: -250px;
+
+}
+
+
+
+a {
+    display: block;
+    text-decoration: none;
+    color:white !important;
+    font-weight: 600;
+}
+
+ a:hover {
+    background:var(--gradient);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    -moz-text-fill-color: transparent;
+    transition: all 0.3s;
+}
+

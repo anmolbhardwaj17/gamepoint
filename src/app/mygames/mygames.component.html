@@ -1,0 +1,69 @@
+<div class="row main pdx-3">
+  <div class="col-12 col-md-1"></div>
+  <div class="col-12 col-md-10">
+    <h2 STYLE="font-weight: 700;" class="txt-primary ">My games</h2>
+    
+    <div class="pdt-4 mgt-4 ">
+      <h5 class="txt-primary gaming spacing">SCHEDULED GAMES</h5>
+        <div class="table-responsive">
+          <table mat-table [dataSource]="listData" class="mat-elevation-z8 custom-table">
+
+            <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+          
+            <!-- Position Column -->
+            <ng-container matColumnDef="gameName">
+              <th class="table-header" mat-header-cell *matHeaderCellDef> GAME </th>
+              <td class="table-main" mat-cell *matCellDef="let element"> {{element.gameName}} </td>
+            </ng-container>
+          
+            <!-- Name Column -->
+            <ng-container matColumnDef="entryAmount">
+              <th class="table-header" mat-header-cell *matHeaderCellDef> ENTRY FEE </th>
+              <td class="table-main" mat-cell *matCellDef="let element"> {{element.entryAmount}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="consoleName">
+              <th class="table-header" mat-header-cell *matHeaderCellDef>CONSOLE</th>
+              <td class="table-main" mat-cell *matCellDef="let element">
+                 {{element.consoleName}} </td>
+            </ng-container>
+
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="scheduleTime">
+              <th class="table-header" mat-header-cell *matHeaderCellDef>PLAY TIME</th>
+              <td class="table-main" mat-cell *matCellDef="let element">
+
+                 {{element.scheduleTime}} </td>
+            </ng-container>
+
+            
+
+            <ng-container matColumnDef="action">
+              <th class="table-header" mat-header-cell *matHeaderCellDef> ACTION </th>
+              <td class="table-button" mat-cell *matCellDef="let element">
+                <button 
+                
+                data-toggle="tooltip" data-placement="top"
+                title="Game can only be started at Schedule time"
+                delay="0"
+                 class="btn-outline" [disabled]="!element.enabled" (click)="getRowData(element)">{{element.action}}</button>
+                  </td>
+            </ng-container>
+            <!-- data-toggle="tooltip" data-placement="top"
+            title="Tooltip on top" -->
+
+            
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumnsMygames; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumnsMygames;"></tr>
+          </table>
+        </div>
+    </div>
+  </div>
+  <div class="col-12 col-md-1"></div>
+    
+</div>
+
+

@@ -1,0 +1,68 @@
+<div class="main pdx-3">
+    
+    <div class="">
+        <div class="form-outer">
+          <h2 STYLE="font-weight: 700;" class=" txt-primary pdb-4">Account settings</h2>
+          
+          <div style="border-radius: 16px;" class="bg-d pd-1">
+            <h4 class="txt-primary">Configure console</h4>
+            <form class="pdy-4" [formGroup]="configConsole">
+
+
+              <div class="form-group mgb-3">
+                <label style="letter-spacing: 2px;" for="consoleId" class="mgb-1 txt-primary gaming">SELECT CONSOLE</label>
+                <br>
+                <select class="gselect pd-1 pdy-1"  [(ngModel)]="currentConsoleId" formControlName="consoleTypeId"  (change)="selectOption($event)" >
+                  <option hidden  selected value=currentConsoleId> {{currentConsoleName}}</option>
+                  <option *ngFor="let option of consoleTypes" [value]="option.id" >
+                    {{option.name}}
+                  </option>
+              </select>
+       
+            </div>
+
+              <div class="form-group mgb-3">
+                  <label style="letter-spacing: 2px;" for="consoleId" class="mgb-1 txt-primary gaming">GAMER ID</label>
+                  <br>
+                  <input 
+                      id="consoleId"
+                      ngModel
+                      accept="image/*"
+                      capture="environment"
+                      name="consoleId"
+                      placeholder={{currentPsnId}}
+                      class="form-control py-3"
+                      formControlName="consoleId"
+                  >
+              </div>
+              <br>
+              <button [disabled]="this.configConsole.invalid" (click)="updateConsole()" class="btn-primary pd-1">Update Console settings</button>
+              <br>
+            </form>
+            
+            <div class="pdt-2 mgt-2 ">
+              <h4 class="txt-primary">Phone no.</h4>
+              <form class="pdy-2" [formGroup]="updatePhone">
+                <div class="form-group mgb-3">
+                    <input 
+                    type="number"
+                        id="phone"
+                        ngModel
+                        name="phone"
+                        placeholder="{{currentPhoneNumber}}"
+                        class="form-control py-3"
+                        formControlName="mobileNumber"
+                    >
+                </div>
+                <button [disabled]="this.updatePhone.invalid" (click)="updatePhoneNumber()" class="btn-primary pd-1">Update Phone no.</button>
+              </form>
+          </div>
+            
+                <!-- <button class="button-secondary p-2">Update no.</button> -->
+              </div>
+              <button (click)="logout()" style="max-width: 500px; padding:10px 12px;width:100%" class="btn btn-outline-danger mgy-5 pd-1">Logout</button>
+        </div>
+        
+      </div>
+      
+</div>

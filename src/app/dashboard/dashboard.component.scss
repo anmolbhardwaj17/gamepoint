@@ -1,0 +1,32 @@
+body{
+  background-image: url("/src/assets/background.png");
+  overflow: scroll;
+}
+
+.main{
+  width:100%;
+  min-height: 100vh;
+  margin:auto;  
+  
+}
+
+.data{
+    width:100%;
+}
+
+.table-responsive {
+  overflow-x: scroll;
+  height: 360px;
+  width: 100;
+  overflow: auto;
+}
+
+@media(max-width:455px){
+  .main{
+    padding:0px 8px !important;
+  }
+}
+
+
+
+

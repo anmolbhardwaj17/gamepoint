@@ -1,0 +1,28 @@
+<div class="main px-3">
+    <h2 class="text-primary ">Open games</h2>
+    
+    <div class="pt-2 mt-2 ">
+        <div >
+            <table class="bg-dark rounded" mdbTable>
+                <thead class="text-secondary">
+                  <tr>
+                    <th class="px-4 py-2" *ngFor="let head of openGamesHeadElements" scope="col">{{head}} </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="text-primary " mdbTableCol *ngFor="let el of openGamesElements">
+                    <th class="px-4 py-2 text-center"  scope="row">{{el.userId}}</th>
+                    <td class="px-4 py-2">{{el.console}}</td>
+                    <td class="px-4 py-2">{{el.gameName}}</td>
+                    <td class="px-4 py-2">{{el.entryFee}}</td>
+                    
+                    <td class="px-4 py-2">
+                      <!-- newbutton -->
+                        <a class="text-black px-2 py-1 rounded bg-secondary" href=`${{el.action}}`>{{el.action}}</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>

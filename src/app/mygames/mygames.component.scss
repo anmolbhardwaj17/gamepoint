@@ -1,0 +1,22 @@
+.main{
+    width:100%;
+    min-height: 100vh;
+    margin:auto;  
+    
+  }
+
+  .table-responsive {
+    overflow-x: scroll;
+    height: 360px;
+    width: 100;
+    overflow: auto;
+  }
+
+  @media(max-width:455px){
+  .main{
+    padding:0px 8px !important;
+  }
+  .extra-col{
+    height:0px !important;
+  }
+}

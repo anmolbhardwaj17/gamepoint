@@ -1,0 +1,29 @@
+<nav class="navbar bg-black">
+    <a class="navbar-brand" id="sidebarCollapse">
+        <i class="bi bi-list"></i> <img width="140px" src="assets/logo.png" alt="Gamepoint logo"
+        />
+    </a>
+    <div class="pdx-2">
+        <div style="text-align: right;"><a  class="txt-secondary">{{userName}}</a></div>
+        
+        <div style="text-align: right;"><span style="font-size: 12px;" class="txt-primary">{{userId}}</span></div>
+    </div>
+    
+</nav>
+
+<div class="wrapper bg-black">
+    
+    <div class="sidebar" data-color="white" data-active-color="danger">
+        <app-sidebar></app-sidebar>
+    </div>
+    <div id="right-content" class="pdt-3 main-panel ">
+        <div class="content">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
+<app-dashboardfooter></app-dashboardfooter>
+
+
+
+

@@ -1,0 +1,72 @@
+<div class=" main pdx-3">
+       
+    <div class="pd-1 form-outer">
+        <h2 STYLE="font-weight: 700;" class="txt-primary ">Create a game</h2>
+        <div style="border-radius: 16px;" class="bg-d pd-1">
+            <form class="pdy-2" [formGroup]="createGameForm">
+                <div class="form-group mgb-3">
+                    <label style="letter-spacing: 2px;" for="gameSelect" class="mgb-1 txt-primary gaming">SELECT GAME</label>
+                    <br>
+                    <div class="input-group mgb-5">
+ 
+                        <select class="gselect pd-1 pdy-1 inputGroupSelect" [(ngModel)]='defaultGameSelect' id="inputGroupSelect" formControlName="gameTypeId" (change)="selectGameEvent($event)">
+                        <option [value]="defaultGameSelect">{{selectedGame}}</option>
+                            <option *ngFor="let option of gameTypes | slice:1" [value]="option.id" >
+                              {{option.name}}
+                            </option>
+                        </select>
+
+                        <!-- <select class="gselect pd-1 pdy-1 inputGroupSelect" [(ngModel)]='defaultGameSelect' id="inputGroupSelect" formControlName="gameType">
+                          <option class="goption" value="FIFA 21">FIFA 21</option>
+                          <option class="goption" value="PES 21">PES 21</option>
+                          <option class="goption" value="FIFA 20">FIFA 20</option>
+                        </select> -->
+                        <!-- <select  formControlName="gameSelect"  class="form-control">
+                            <option *ngFor="let c of Data"  [ngValue]="c.id">{{c.Name}}</option>
+                        </select> -->
+                      </div>
+                    <!-- <input 
+                        id="gameSelect"
+                        ngModel
+                        name="gameSelect"
+                        placeholder="Select game"
+                        class="form-control p-2"
+                        formControlName="gameSelect"
+                        required
+                    > -->
+                </div>
+                <div class="form-group mgb-5">
+                    <label style="letter-spacing: 2px;" for="entryAmount" class="mgb-1 txt-primary gaming">ENTRY AMOUNT</label>
+                    <br>
+                    <div class="input-group mgb-3">
+                      <select class="gselect pd-1 pdy-1 inputGroupSelect" [(ngModel)]='defaultPriceSelect' id="inputGroupSelectTime" formControlName="entryAmount">
+                        <option class="goption" value="50">50</option>
+                        <option class="goption" value="100">100</option>
+                      </select>
+                      <!-- <select  formControlName="gameSelect"  class="form-control">
+                          <option *ngFor="let c of Data"  [ngValue]="c.id">{{c.Name}}</option>
+                      </select> -->
+                    </div>
+                </div>
+                <div class="form-group mgb-5">
+                    <label style="letter-spacing: 2px;" for="scheduleTime" class="mgb-1 txt-primary gaming">SCHEDULE TIMING</label>
+                    <br>
+                    <input 
+                    type="datetime-local"
+                        id="scheduleTime"
+                        ngModel
+                        name="scheduleTime"
+                        placeholder="Enter your schedule Time"
+                        class="form-control py-3"
+                        formControlName="scheduleTime"
+                    >
+                </div>
+                
+                <br>
+                <button [disabled]="this.createGameForm.invalid" (click)="createGame()" class="btn-primary pd-1">Create game</button>
+                <br>
+              </form>
+        </div>
+        
+    </div>
+</div>

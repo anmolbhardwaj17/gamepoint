@@ -1,0 +1,111 @@
+<div class=" row main pdx-3">
+  <div class="col-12 col-md-1"></div>
+  <div class="col-12 col-md-10">
+    <h2 STYLE="font-weight: 700;" class="txt-primary ">Dashboard</h2>
+
+
+    <div class="pdt-4 mgt-4">
+        <div>
+          <h5 class="txt-primary gaming spacing pdb-1">OPEN GAMES</h5>
+          <div class="table-responsive">
+
+            <table mat-table [dataSource]="listData" class="mat-elevation-z8 custom-table">
+
+              <!--- Note that these columns can be defined in any order.
+                    The actual rendered columns are set as a property on the row definition" -->
+
+              <!-- Position Column -->
+              <ng-container matColumnDef="userId">
+                <th class="table-header ogp" mat-header-cell *matHeaderCellDef> USER ID </th>
+                <td class="table-main" mat-cell *matCellDef="let element"> {{element.userId}} </td>
+              </ng-container>
+
+              <!-- Name Column -->
+              <ng-container matColumnDef="consoleName">
+                <th class="table-header ogp" mat-header-cell *matHeaderCellDef> CONSOLE </th>
+                <td class="table-main" mat-cell *matCellDef="let element"> {{element.consoleName}} </td>
+              </ng-container>
+
+              <!-- Weight Column -->
+              <ng-container matColumnDef="gameName">
+                <th class="table-header ogp" mat-header-cell *matHeaderCellDef> GAME </th>
+                <td class="table-main" mat-cell *matCellDef="let element"> {{element.gameName}} </td>
+              </ng-container>
+
+              <!-- Symbol Column -->
+
+              <ng-container matColumnDef="entryAmount">
+                <th class="table-header ogp" mat-header-cell *matHeaderCellDef> ENTRY FEE </th>
+                <td class="table-main"mat-cell *matCellDef="let element"> {{element.entryAmount}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="scheduleTime">
+                <th class="table-header ogp" mat-header-cell *matHeaderCellDef> TIME </th>
+                <td class="table-main"mat-cell *matCellDef="let element"> {{element.scheduleTime}} </td>
+              </ng-container>
+
+
+              <ng-container matColumnDef="action">
+                <th class="table-header ogp" mat-header-cell *matHeaderCellDef> ACTION </th>
+                <td class="table-button"mat-cell *matCellDef="let element">
+                  <button class="btn-outline"  (click)="getRowData(element)"  >{{element.action}}</button>
+                </td>
+
+              </ng-container>
+
+
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumnsOpengames; sticky: true"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumnsOpengames;"></tr>
+            </table>
+          </div>
+
+
+        </div>
+    </div>
+    <div class="pdt-4 mgy-4">
+      <h5 class="txt-primary gaming spacing pdb-1">LEADERBOARD</h5>
+        <div class="table-responsive">
+
+
+          <table mat-table [dataSource]="leaderBoardListData" class="mat-elevation-z8 custom-table">
+
+            <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="userId">
+              <th class="table-header w25" mat-header-cell *matHeaderCellDef> USER ID </th>
+              <td class="table-main" mat-cell *matCellDef="let element"> {{element.userId}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="totalEarnings">
+              <th class="table-header w25" mat-header-cell *matHeaderCellDef> EARNINGS </th>
+              <td class="table-main" mat-cell *matCellDef="let element"> {{element.totalEarnings}} </td>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="winningStreak">
+              <th class="table-header w25" mat-header-cell *matHeaderCellDef>WINNING STREAK</th>
+              <td class="table-main" mat-cell *matCellDef="let element"> {{element.winningStreak}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="matchesPlayed">
+              <th class="table-header w25" mat-header-cell *matHeaderCellDef>MATCHES</th>
+              <td class="table-main" mat-cell *matCellDef="let element"> {{element.matchesPlayed}} </td>
+            </ng-container>
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumnsLeaderboard; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumnsLeaderboard;"></tr>
+          </table>
+          <mat-paginator #paginator
+                 [pageSize]="10"
+                 [pageSizeOptions]="[5, 10, 20]">
+          </mat-paginator>
+        </div>
+    </div>
+  </div>
+  <div class="col-12 col-md-1"></div>
+</div>
