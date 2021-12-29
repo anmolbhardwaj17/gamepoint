@@ -1,5 +1,5 @@
 # Gamepoint
-punto-de-juego in spanish
+(punto-de-juego in spanish)
 
 ### Betting app for console players
 
